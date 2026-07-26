@@ -1,0 +1,110 @@
+---
+const packages = [
+  {
+    name: 'Ölservice',
+    subtitle: 'Für den regelmäßigen Check',
+    price: 'ab 89 €',
+    unit: '/ Termin',
+    highlight: false,
+    items: [
+      'Öl- und Filterwechsel',
+      'Sichtprüfung Flüssigkeiten',
+      'Reifendruck & Profil',
+      'Beleuchtung prüfen',
+      'Termin in 48 Std.',
+    ],
+  },
+  {
+    name: 'Inspektion',
+    subtitle: 'Unser Bestseller',
+    price: 'ab 189 €',
+    unit: '/ Termin',
+    highlight: true,
+    items: [
+      'Alles aus Ölservice',
+      'Herstellerkonform nach Serviceplan',
+      'Bremsen & Fahrwerk geprüft',
+      'Fehlerspeicher ausgelesen',
+      'Protokoll für Garantieerhalt',
+      'Ersatzwagen auf Anfrage',
+    ],
+  },
+  {
+    name: 'Komplettservice',
+    subtitle: 'Rundum-sorglos',
+    price: 'ab 349 €',
+    unit: '/ Termin',
+    highlight: false,
+    items: [
+      'Alles aus Inspektion',
+      'HU/AU-Vorabcheck',
+      'Klimaservice inklusive',
+      'Reifenwechsel & Einlagerung',
+      'Hol- & Bringservice',
+      'Kostenvoranschlag vorab',
+    ],
+  },
+];
+
+const addons = [
+  { name: 'Bremsen vorne oder hinten', price: 'ab 189 €' },
+  { name: 'HU/AU-Vorbereitung', price: 'ab 49 €' },
+  { name: 'Klimaanlage befüllen', price: 'ab 99 €' },
+  { name: 'Räderwechsel & Einlagerung', price: 'ab 39 €' },
+  { name: 'Diagnose Fehlerspeicher', price: 'ab 59 €' },
+];
+---
+
+<section id="preise" class="bg-bg-surface-alt py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="reveal text-center">
+      <p class="font-mono text-xs uppercase tracking-[0.35em] text-accent">Beispiel-Pakete</p>
+      <h2 class="mt-4 text-4xl md:text-5xl text-text-primary">Transparent. Fair. Planbar.</h2>
+      <p class="mx-auto mt-4 max-w-2xl font-body text-text-secondary">
+        Alle Preise sind Beispielinhalte dieser Vorschau und werden durch
+        Ihre echte Preisstruktur ersetzt.
+      </p>
+    </div>
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {packages.map((pkg, i) => (
+        <div class={`reveal reveal-delay-${i + 1} relative flex flex-col rounded-2xl border p-8 ${pkg.highlight ? 'border-accent bg-bg-surface shadow-lg shadow-accent/10 ring-1 ring-accent/20' : 'border-border-subtle bg-bg-surface'}`}>
+          {pkg.highlight && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bg-primary">Empfohlen</div>
+          )}
+          <div>
+            <h3 class={`text-2xl ${pkg.highlight ? 'text-accent' : 'text-text-primary'}`}>{pkg.name}</h3>
+            <p class="mt-1 font-body text-xs uppercase tracking-[0.2em] text-text-muted">{pkg.subtitle}</p>
+            <div class="mt-5 flex items-baseline gap-1">
+              <span class="font-display text-4xl text-text-primary">{pkg.price}</span>
+              <span class="font-body text-sm text-text-muted">{pkg.unit}</span>
+            </div>
+          </div>
+          <ul class="mt-6 flex-1 space-y-3">
+            {pkg.items.map((item) => (
+              <li class="flex items-start gap-3 font-body text-sm text-text-secondary">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a href="#angebot" class={`mt-8 block rounded-full px-6 py-3 text-center text-sm font-body font-medium tracking-widest transition-colors ${pkg.highlight ? 'bg-accent text-bg-primary hover:bg-accent-hover' : 'border border-border text-text-primary hover:bg-bg-surface-alt'}`}>
+            Termin anfragen
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Add-ons -->
+    <div class="reveal mt-8 rounded-2xl border border-border-subtle bg-bg-surface p-8">
+      <h3 class="text-2xl text-text-primary">Einzelleistungen</h3>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {addons.map((item) => (
+          <li class="flex items-baseline justify-between gap-4 border-b border-border-subtle pb-3 sm:border-0 sm:pb-0">
+            <span class="font-body text-sm text-text-secondary">{item.name}</span>
+            <span class="shrink-0 font-mono text-sm text-text-primary">{item.price}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

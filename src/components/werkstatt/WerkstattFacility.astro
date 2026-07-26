@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import diagnoseImage from '../../assets/images/werkstatt/diagnose.webp';
+import reifenImage from '../../assets/images/werkstatt/reifen.webp';
+import motorImage from '../../assets/images/werkstatt/motor.webp';
+
+const shots = [
+  { src: diagnoseImage, alt: 'Diagnosegerät im Einsatz an einem Fahrzeug', label: 'Diagnose', text: 'Herstellerspezifische Prüftechnik für schnelle, präzise Fehlersuche.' },
+  { src: reifenImage, alt: 'Sortiertes Reifenlager in der Werkstatt', label: 'Reifenlager', text: 'Saisonreifen fachgerecht eingelagert, jederzeit griffbereit.' },
+  { src: motorImage, alt: 'Offene Motorhaube mit Blick auf den Motorraum', label: 'Motorraum', text: 'Sorgfältige Arbeit direkt am Motor — sauber und nachvollziehbar dokumentiert.' },
+];
+---
+
+<section id="werkstatt" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
+  <div class="reveal text-center">
+    <p class="font-mono text-xs uppercase tracking-[0.35em] text-accent">Einblick</p>
+    <h2 class="mt-4 text-4xl md:text-5xl text-text-primary">Unsere Werkstatt</h2>
+    <p class="mx-auto mt-4 max-w-2xl font-body text-text-secondary">
+      Moderne Ausstattung und saubere Arbeitsplätze — diese Aufnahmen sind
+      Beispielbilder der Vorschau und werden durch echte Fotos Ihres Betriebs ersetzt.
+    </p>
+  </div>
+  <div class="mt-14 grid gap-6 md:grid-cols-3">
+    {shots.map((shot, i) => (
+      <figure class={`reveal reveal-delay-${i + 1} overflow-hidden rounded-2xl border border-border-subtle bg-bg-surface`}>
+        <div class="relative aspect-[4/3] overflow-hidden">
+          <Image src={shot.src} alt={shot.alt} class="h-full w-full object-cover" widths={[400, 800]} sizes="(min-width: 768px) 33vw, 100vw" quality={85} />
+        </div>
+        <figcaption class="p-6">
+          <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-accent">{shot.label}</p>
+          <p class="mt-2 font-body text-sm leading-relaxed text-text-secondary">{shot.text}</p>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+const quotes = [
+  {
+    text: 'Diagnose war in 20 Minuten klar, Kostenvoranschlag kam noch am selben Tag. Keine versteckten Positionen auf der Rechnung — genau das, was man sich von einer Werkstatt wünscht.',
+    name: 'R. H.',
+    detail: 'Firmenwagen-Flotte, 6 Fahrzeuge',
+    stars: 5,
+  },
+  {
+    text: 'HU/AU-Vorbereitung hat uns beim Prüftermin bares Geld gespart — die Mängelliste war komplett, keine böse Überraschung beim TÜV. Termin gab es innerhalb von zwei Tagen.',
+    name: 'J. M.',
+    detail: 'Privatkunde',
+    stars: 5,
+  },
+  {
+    text: 'Seit Jahren unsere Stammwerkstatt für die ganze Familie. Ehrliche Beratung, faire Preise, und der Hol- und Bringservice ist bei drei Autos im Haushalt Gold wert.',
+    name: 'Familie K.',
+    detail: 'Stammkunden seit 2019',
+    stars: 5,
+  },
+];
+
+const stats = [
+  { value: '2.400+', label: 'Fahrzeuge im Jahr' },
+  { value: '15 Jahre', label: 'Meisterbetrieb' },
+  { value: '4,8 / 5', label: 'Ø Bewertung' },
+  { value: '48 Std.', label: 'bis zum Termin' },
+];
+---
+
+<section id="bewertungen" class="bg-bg-surface-alt py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <!-- Stats row -->
+    <div class="reveal grid grid-cols-2 gap-5 sm:grid-cols-4 mb-16">
+      {stats.map((s) => (
+        <div class="rounded-2xl border border-border-subtle bg-bg-surface p-6 text-center">
+          <p class="font-display text-3xl text-accent">{s.value}</p>
+          <p class="mt-2 font-body text-sm text-text-muted">{s.label}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="reveal text-center">
+      <p class="font-mono text-xs uppercase tracking-[0.35em] text-accent">Beispiel-Bewertungen</p>
+      <h2 class="mt-4 text-4xl md:text-5xl text-text-primary">Was Kunden sagen könnten</h2>
+      <p class="mx-auto mt-4 max-w-2xl font-body text-text-secondary">
+        Auf der echten Website binden wir Ihre Google-Bewertungen ein —
+        diese Stimmen sind fiktive Beispiele der Vorschau.
+      </p>
+    </div>
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {quotes.map((quote, i) => (
+        <blockquote class={`reveal reveal-delay-${i + 1} flex flex-col justify-between rounded-2xl border border-border-subtle bg-bg-surface p-8`}>
+          <!-- Stars -->
+          <div class="flex gap-0.5 mb-4" aria-label={`${quote.stars} von 5 Sternen`}>
+            {Array.from({ length: quote.stars }).map(() => (
+              <svg class="h-4 w-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            ))}
+          </div>
+          <p class="font-body text-base leading-relaxed text-text-secondary flex-1">„{quote.text}"</p>
+          <footer class="mt-6 font-body text-sm text-text-secondary">
+            <span class="font-medium text-accent">{quote.name}</span> · {quote.detail}
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+    <div class="reveal mt-8 text-center">
+      <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-text-muted">Unverbindliche Vorschau · Fiktive Beispielbewertungen</p>
+    </div>
+  </div>
+</section>

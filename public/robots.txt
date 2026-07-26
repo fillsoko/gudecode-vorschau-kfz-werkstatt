@@ -1,0 +1,4 @@
+# vorschau.gudecode.de — personalized, non-public client previews.
+# Nothing here should be indexed.
+User-agent: *
+Disallow: /

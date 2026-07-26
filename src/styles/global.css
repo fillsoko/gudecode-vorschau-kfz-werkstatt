@@ -1,0 +1,243 @@
+@import 'tailwindcss';
+@import '@fontsource/cormorant-garamond/300.css';
+@import '@fontsource/cormorant-garamond/400.css';
+@import '@fontsource/cormorant-garamond/600.css';
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+@font-face {
+  font-family: 'Crillee Wordmark';
+  src:
+    url('/fonts/crillee-bold-regular.ttf') format('truetype'),
+    local('Crillee'),
+    local('Crillee Bold'),
+    local('Crillee-Bold'),
+    local('Crillee Regular'),
+    local('Crillee Italic'),
+    local('Crillee AT Italic Regular');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme {
+  --color-bg-primary: #000000;
+  --color-bg-surface: #111111;
+  --color-bg-surface-alt: #0A0A0A;
+  --color-border: #222222;
+  --color-border-subtle: #1A1A1A;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #999999;
+  --color-text-muted: #555555;
+  --color-accent: #FF6B00;
+  --color-accent-hover: #E55F00;
+  --color-accent-muted: #FF6B0033;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-wordmark: 'Crillee Wordmark', 'Cormorant Garamond', serif;
+}
+
+/*
+ * Friseur ("salon") theme — same dark base architecture, warm palette.
+ * Tailwind v4 utilities resolve to the CSS variables above, so scoping
+ * the overrides to .theme-salon re-colors every utility inside it.
+ */
+.theme-salon {
+  --color-bg-primary: #171110;
+  --color-bg-surface: #221915;
+  --color-bg-surface-alt: #1c1512;
+  --color-border: #3d2f26;
+  --color-border-subtle: #2b211b;
+  --color-text-primary: #f6ede2;
+  --color-text-secondary: #c4ad98;
+  --color-text-muted: #85705f;
+  --color-accent: #d3a55a;
+  --color-accent-hover: #e2b96f;
+  --color-accent-muted: #d3a55a33;
+
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Softer, serif-led headings instead of the SOC uppercase treatment. */
+.theme-salon h1,
+.theme-salon h2,
+.theme-salon h3,
+.theme-salon h4 {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: 0.015em;
+}
+
+/*
+ * Fitness ("training studio") theme — athletic dark palette with energetic accents.
+ * Maintains the motorrad dark base with vibrant green energy accent.
+ */
+.theme-fitness {
+  --color-bg-primary: #0d1117;
+  --color-bg-surface: #161b22;
+  --color-bg-surface-alt: #0d1117;
+  --color-border: #30363d;
+  --color-border-subtle: #21262d;
+  --color-text-primary: #f0f6fc;
+  --color-text-secondary: #8b949e;
+  --color-text-muted: #6e7681;
+  --color-accent: #1f6feb;
+  --color-accent-hover: #388bfd;
+  --color-accent-muted: #1f6feb33;
+
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/*
+ * Tiersalon (pet grooming) theme — warm, friendly dark palette: soft cocoa
+ * browns with an apricot accent. Deliberately gentler than the motorrad SOC
+ * look and warmer/lighter than the friseur gold.
+ */
+.theme-tiersalon {
+  --color-bg-primary: #1b1410;
+  --color-bg-surface: #271c15;
+  --color-bg-surface-alt: #211712;
+  --color-border: #46332a;
+  --color-border-subtle: #32251e;
+  --color-text-primary: #faf1e7;
+  --color-text-secondary: #d3b8a3;
+  --color-text-muted: #93796a;
+  --color-accent: #e89a5f;
+  --color-accent-hover: #f2ac74;
+  --color-accent-muted: #e89a5f33;
+
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Friendly serif headings, no uppercase shouting. */
+.theme-tiersalon h1,
+.theme-tiersalon h2,
+.theme-tiersalon h3,
+.theme-tiersalon h4 {
+  font-family: var(--font-display);
+  text-transform: none;
+  letter-spacing: 0.015em;
+}
+
+/*
+ * KFZ-Werkstatt (auto repair) theme — cool graphite/steel base with a warm
+ * amber "Werkstattlampe" accent. Keeps the uppercase technical heading
+ * treatment of the motorrad base: precise, industrial, trustworthy.
+ */
+.theme-werkstatt {
+  --color-bg-primary: #0e1013;
+  --color-bg-surface: #171a1f;
+  --color-bg-surface-alt: #12151a;
+  --color-border: #2b3038;
+  --color-border-subtle: #1e2228;
+  --color-text-primary: #f2f4f6;
+  --color-text-secondary: #9aa3ad;
+  --color-text-muted: #5d6570;
+  --color-accent: #f0a626;
+  --color-accent-hover: #ffb83d;
+  --color-accent-muted: #f0a62633;
+
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.01em;
+}
+
+/* SOC-style heading treatment */
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.wordmark {
+  font-family: var(--font-wordmark);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.brand-marquee {
+  width: 100%;
+}
+
+.brand-marquee-track {
+  display: flex;
+  width: fit-content;
+  min-width: max-content;
+  will-change: transform;
+  animation: brand-marquee-scroll 16s linear infinite;
+}
+
+.brand-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+
+@media (min-width: 640px) {
+  .brand-marquee-group {
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .brand-marquee-group {
+    gap: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .brand-marquee-group {
+    gap: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@keyframes brand-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}

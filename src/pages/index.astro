@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Page from '../components/werkstatt/WerkstattPage.astro';
+import type { ClientRecord } from '../lib/clients';
+
+const client: ClientRecord = {"slug": "meister-kfz-service", "company": "Meister KFZ-Service", "segment": "werkstatt", "street": "Gewerbering 18", "zip": "70565", "city": "Stuttgart", "email": "anfrage@meister-kfz-service.example", "phone": "+49 711 4455667", "updatedAt": "2026-07-26T00:00:00Z"};
+---
+
+<BaseLayout title={`${client.company} — Website-Vorschau von GudeCode`} noindex>
+  <Page client={client} />
+</BaseLayout>

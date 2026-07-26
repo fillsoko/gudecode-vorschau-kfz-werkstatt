@@ -1,0 +1,25 @@
+---
+import type { ClientRecord } from '../lib/clients';
+
+interface Props {
+  client: ClientRecord;
+}
+
+const { client } = Astro.props;
+---
+
+<div class="fixed bottom-0 left-0 right-0 z-[60] bg-accent text-text-primary shadow-[0_-2px_12px_rgba(0,0,0,0.35)]">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-1 px-4 py-2 text-center sm:flex-row sm:px-6 sm:text-left">
+    <p class="font-body text-xs sm:text-sm">
+      <span class="font-semibold">Unverbindliche Website-Vorschau</span> für {client.company} — erstellt von GudeCode
+    </p>
+    <a
+      href="https://gudecode.de"
+      target="_blank"
+      rel="noopener"
+      class="font-mono text-[0.65rem] uppercase tracking-[0.2em] underline underline-offset-4 hover:no-underline sm:text-xs"
+    >
+      gudecode.de
+    </a>
+  </div>
+</div>

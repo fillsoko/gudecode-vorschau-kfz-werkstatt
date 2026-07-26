@@ -1,0 +1,35 @@
+---
+/**
+ * Complete one-page KFZ-Werkstatt preview, rendered by /[slug] for records
+ * with segment 'werkstatt'. Wrapped in .theme-werkstatt so the graphite/
+ * amber palette overrides base tokens (see global.css).
+ */
+import PreviewRibbon from '../PreviewRibbon.astro';
+import WerkstattNav from './WerkstattNav.astro';
+import WerkstattHero from './WerkstattHero.astro';
+import WerkstattServices from './WerkstattServices.astro';
+import WerkstattFacility from './WerkstattFacility.astro';
+import WerkstattPricing from './WerkstattPricing.astro';
+import WerkstattTestimonials from './WerkstattTestimonials.astro';
+import WerkstattFooter from './WerkstattFooter.astro';
+import type { ClientRecord } from '../../lib/clients';
+
+interface Props {
+  client: ClientRecord;
+}
+
+const { client } = Astro.props;
+---
+
+<div class="theme-werkstatt min-h-screen">
+  <PreviewRibbon client={client} />
+  <WerkstattNav client={client} />
+  <main class="pb-16">
+    <WerkstattHero client={client} />
+    <WerkstattServices />
+    <WerkstattFacility />
+    <WerkstattPricing />
+    <WerkstattTestimonials />
+  </main>
+  <WerkstattFooter client={client} />
+</div>
