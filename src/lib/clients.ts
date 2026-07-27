@@ -29,6 +29,8 @@ export interface ClientRecord {
   heroText?: string;
   /** ERPNext document name this record was synced from (e.g. CRM-LEAD-2026-00042). */
   erpnextId?: string;
+  /** Real contact person to address by name (GUD-68), e.g. "Frau Anna Müller". Absent when unknown. */
+  contactName?: string;
   updatedAt?: string;
 }
 

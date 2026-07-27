@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WerkstattPage from '../components/werkstatt/WerkstattPage.astro';
+import { isNummerSlug, getProspect, toClientRecord } from '../lib/prospects';
+
+export const prerender = false;
+
+const { nummer } = Astro.params;
+const prospect = nummer && isNummerSlug(nummer) ? await getProspect(nummer) : null;
+const client = prospect && prospect.segment === 'werkstatt' ? toClientRecord(nummer!, prospect) : null;
+
+if (!client) {
+  Astro.response.status = 404;
+}
+
+const title = client
+  ? `${client.company} — Website-Vorschau von GudeCode`
+  : 'Vorschau nicht gefunden — GudeCode';
+
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+Astro.response.headers.set('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
+---
+
+{
+  client ? (
+    <BaseLayout title={title} noindex>
+      <WerkstattPage client={client} />
+    </BaseLayout>
+  ) : (
+    <BaseLayout title={title} noindex>
+      <main class="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.35em] text-accent">GudeCode Vorschau</p>
+        <h1 class="wordmark text-4xl text-text-primary md:text-6xl">Vorschau nicht gefunden</h1>
+        <p class="max-w-md font-body text-text-secondary">
+          Unter dieser Adresse liegt keine Website-Vorschau. Bitte prüfen Sie den Link aus Ihrer
+          E-Mail oder melden Sie sich bei uns: <a class="text-accent hover:underline" href="mailto:info@gudecode.de">info@gudecode.de</a>
+        </p>
+      </main>
+    </BaseLayout>
+  )
+}
