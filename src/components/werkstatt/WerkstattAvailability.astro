@@ -1,0 +1,54 @@
+---
+import type { ClientRecord } from '../../lib/clients';
+
+interface Props {
+  client: ClientRecord;
+}
+
+const { client } = Astro.props;
+
+const hours = [
+  { day: 'Montag – Freitag', time: '08:00 – 18:00 Uhr' },
+  { day: 'Samstag', time: '09:00 – 13:00 Uhr (nach Vereinbarung)' },
+  { day: 'Sonntag', time: 'Geschlossen' },
+];
+---
+
+<section id="angebot" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
+  <div class="reveal grid gap-10 rounded-2xl border border-border-subtle bg-bg-surface p-8 md:grid-cols-2 md:p-12">
+    <div>
+      <p class="font-mono text-xs uppercase tracking-[0.35em] text-accent">Verfügbarkeit</p>
+      <h2 class="mt-4 text-3xl md:text-4xl text-text-primary">Wann sind wir für Sie da?</h2>
+      <p class="mt-4 font-body text-text-secondary">
+        Beispiel-Öffnungszeiten dieser Vorschau — Termine sind in der Regel
+        innerhalb von 48 Stunden verfügbar.
+      </p>
+      <ul class="mt-8 space-y-3">
+        {hours.map((slot) => (
+          <li class="flex items-center justify-between gap-4 border-b border-border-subtle pb-3 font-body text-sm">
+            <span class="text-text-secondary">{slot.day}</span>
+            <span class="font-mono text-text-primary">{slot.time}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="flex flex-col justify-center gap-4 rounded-xl bg-bg-surface-alt p-8 text-center">
+      <p class="font-body text-sm text-text-secondary">
+        Termin anfragen bei {client.company}
+      </p>
+      {client.phone && (
+        <a href={`tel:${client.phone.replace(/\s+/g, '')}`} class="rounded-full bg-accent px-6 py-3 text-sm font-body font-medium tracking-widest text-bg-primary hover:bg-accent-hover transition-colors">
+          {client.phone} anrufen
+        </a>
+      )}
+      {client.email && (
+        <a href={`mailto:${client.email}`} class="rounded-full border border-border px-6 py-3 text-sm font-body font-medium tracking-widest text-text-primary hover:bg-bg-surface transition-colors">
+          E-Mail schreiben
+        </a>
+      )}
+      {!client.phone && !client.email && (
+        <p class="font-body text-sm text-text-muted">Kontaktdaten folgen in Ihrer echten Website.</p>
+      )}
+    </div>
+  </div>
+</section>

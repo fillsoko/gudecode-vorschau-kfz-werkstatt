@@ -1,0 +1,48 @@
+---
+const vehicles = [
+  {
+    title: 'PKW',
+    text: 'Alle gängigen Marken und Modelle — von Kleinwagen bis Oberklasse.',
+    icon: 'M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12',
+  },
+  {
+    title: 'Motorrad & Kleinkraftrad',
+    text: 'Wartung, Reifen und Inspektion für Zweiräder aller Hubraumklassen.',
+    icon: 'M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z',
+  },
+  {
+    title: 'Transporter & Nutzfahrzeuge',
+    text: 'Auch für gewerblich genutzte Fahrzeuge — planbare Standzeiten inklusive.',
+    icon: 'M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12',
+  },
+  {
+    title: 'Wohnmobil & Wohnwagen',
+    text: 'Saisoncheck, Gasprüfung und Fahrwerk vor der nächsten Tour.',
+    icon: 'M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25',
+  },
+];
+---
+
+<section id="fahrzeuge" class="bg-bg-surface-alt py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="reveal text-center">
+      <p class="font-mono text-xs uppercase tracking-[0.35em] text-accent">Fahrzeugtypen</p>
+      <h2 class="mt-4 text-4xl md:text-5xl text-text-primary">Für welches Fahrzeug?</h2>
+      <p class="mx-auto mt-4 max-w-2xl font-body text-text-secondary">
+        Diese Werkstatt nimmt ein breites Spektrum an — die folgende Übersicht
+        ist ein Beispielinhalt der Vorschau.
+      </p>
+    </div>
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {vehicles.map((vehicle, i) => (
+        <div class={`reveal reveal-delay-${i + 1} rounded-2xl border border-border-subtle bg-bg-surface p-6 text-center`}>
+          <svg class="mx-auto h-9 w-9 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d={vehicle.icon} />
+          </svg>
+          <h3 class="mt-4 text-lg text-text-primary">{vehicle.title}</h3>
+          <p class="mt-2 font-body text-sm leading-relaxed text-text-secondary">{vehicle.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -8,8 +8,10 @@ import PreviewRibbon from '../PreviewRibbon.astro';
 import WerkstattNav from './WerkstattNav.astro';
 import WerkstattHero from './WerkstattHero.astro';
 import WerkstattServices from './WerkstattServices.astro';
+import WerkstattVehicles from './WerkstattVehicles.astro';
 import WerkstattFacility from './WerkstattFacility.astro';
 import WerkstattPricing from './WerkstattPricing.astro';
+import WerkstattAvailability from './WerkstattAvailability.astro';
 import WerkstattTestimonials from './WerkstattTestimonials.astro';
 import WerkstattFooter from './WerkstattFooter.astro';
 import type { ClientRecord } from '../../lib/clients';
@@ -27,8 +29,10 @@ const { client } = Astro.props;
   <main class="pb-16">
     <WerkstattHero client={client} />
     <WerkstattServices />
+    <WerkstattVehicles />
     <WerkstattFacility />
     <WerkstattPricing />
+    <WerkstattAvailability client={client} />
     <WerkstattTestimonials />
   </main>
   <WerkstattFooter client={client} />
